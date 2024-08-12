@@ -33,6 +33,7 @@ class DeviceController implements DeviceIdApi {
         LOGGER.info("Publishing measurement for device '{}'", deviceId);
         final MeasurementDO measurementDO = fromMeasurement(deviceId, measurement);
         service.saveMeasurement(measurementDO);
+        LOGGER.info("Moj wlasny, autorski log 4 :D");
         return ResponseEntity.ok(measurement);
     }
     @Override
@@ -44,10 +45,12 @@ class DeviceController implements DeviceIdApi {
                 .toList();
         final Measurements measurementsResult = new Measurements();
         measurementsResult.measurements(measurements);
+        LOGGER.info("Moj wlasny, autorski log 3 :D");
         return ResponseEntity.ok(measurementsResult);
     }
 
     private Measurement toMeasurement(final MeasurementDO measurementDO) {
+        LOGGER.info("Moj wlasny, autorski log 2 :D");
         final Measurement measurement = new Measurement();
         measurement.setTimestamp(measurementDO.getCreationTime());
         measurement.setType(measurementDO.getType());
@@ -56,6 +59,7 @@ class DeviceController implements DeviceIdApi {
     }
 
     private MeasurementDO fromMeasurement(final String deviceId, final Measurement measurement) {
+        LOGGER.info("Moj wlasny, autorski log :D");
         final MeasurementDO measurementDO = new MeasurementDO();
         measurementDO.setDeviceId(deviceId);
         measurementDO.setType(measurement.getType());
